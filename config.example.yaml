@@ -1,0 +1,32 @@
+# World Brief settings. Copy to config.yaml (or run: python setup.py) and edit.
+# Secrets (keys, passwords, email addresses) NEVER go here: use GitHub Secrets or .env.
+
+you:
+  name: ""                    # only used in greetings; never published
+  timezone: UTC               # e.g. Europe/London, America/New_York, Asia/Kolkata
+
+email:
+  from_name: World Brief      # sender name shown in the inbox
+  send_time: "07:00"          # local time the email should arrive (24h)
+  weekly: true                # Sunday weekly deep-dive
+
+# The brief always covers the whole world. Optional extra focus = their own sections,
+# extra news sources and market rows. Any 2-letter country code works; ready-made packs:
+# in (India), us (USA), gb (UK), ca (Canada), au (Australia).
+focus:
+  countries: []               # e.g. [in, us]
+  cities: []                  # e.g. [London] or [Hyderabad, Toronto]
+
+podcast:
+  enabled: true
+  hosts: [Alex, Maya]         # two names
+  accent: en-US               # en-US | en-GB | en-IN | en-AU | en-CA
+  languages: []               # English is always the main episode; optional: te (Telugu), hi (Hindi)
+
+telegram:
+  enabled: false              # needs TELEGRAM_BOT_TOKEN, then: python -m app telegram setup
+
+alerts:
+  breaking: false             # email only for truly big breaking news (max 5/day)
+
+feeds_extra: []               # any RSS/Atom URLs you want added (https://...)

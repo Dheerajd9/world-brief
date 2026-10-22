@@ -1,0 +1,30 @@
+name: Test
+
+# Every change (including your config.yaml) is checked with fake news, a fake AI and silent
+# audio: no keys, no email. Red = something would break tomorrow's edition.
+on:
+  push:
+    paths-ignore: ["state/**", "briefs/**", "logs/**", "docs/**", "*.md"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install
+        run: |
+          pip install -q -r requirements.txt
+          which ffmpeg || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg)
+      - name: Check config.yaml
+        run: python -c "import sys; sys.path.insert(0, 'app'); import config; c = config.load(); print('config OK:', c['you']['timezone'], c['email']['send_time'], c['focus'])"
+      - name: End-to-end test
+        run: python tests/e2e.py

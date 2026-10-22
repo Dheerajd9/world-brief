@@ -1,0 +1,111 @@
+name: World Brief
+
+# Runs every 30 minutes; each run asks "is anything due right now (in MY time zone, after MY
+# send time) and not sent yet?" and stops in seconds if not. So: no cron editing, daylight
+# saving is automatic, and a skipped GitHub slot is caught by the next one.
+# Run something by hand: Actions -> World Brief -> Run workflow -> pick a command.
+
+on:
+  schedule:
+    - cron: "7,37 * * * *"
+  workflow_dispatch:
+    inputs:
+      command:
+        description: "What to run"
+        type: choice
+        options: [due, morning, weekly, podcast, keycheck, feedcheck, watchdog, telegram-setup]
+        default: due
+      dry_run:
+        description: "Build everything but send nothing"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write              # save state/ + briefs/ (memory) and publish the podcast site
+
+concurrency:
+  group: world-brief
+  cancel-in-progress: false
+
+jobs:
+  brief:
+    runs-on: ubuntu-latest
+    timeout-minutes: 160       # the email waits for the podcast up to 2 h on a slow AI day
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          ref: ${{ github.ref_name }}   # latest commit when the job starts (sees "already sent")
+
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: |
+          pip install -q -r requirements.txt
+          which ffmpeg || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg)
+
+      - name: Run
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          GOOGLE_TTS_API_KEY: ${{ secrets.GOOGLE_TTS_API_KEY }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          TO_EMAIL: ${{ secrets.TO_EMAIL }}
+          EXTRA_EMAILS: ${{ secrets.EXTRA_EMAILS }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          PODCAST_REPO: ${{ github.repository }}
+          PODCAST_TOKEN: ${{ secrets.PODCAST_TOKEN || github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          COMMAND: ${{ inputs.command || 'due' }}
+          DRY: ${{ inputs.dry_run && '--dry-run' || '' }}
+          EVENT: ${{ github.event_name }}
+        run: |
+          set -o pipefail
+          mkdir -p logs
+          mask() { sed -u -E 's/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/***@***/g'; }
+          [ "$EVENT" = schedule ] && export WB_SCHEDULED=1
+          case "$COMMAND" in
+            due|morning|weekly) python -m app run "$COMMAND" $DRY 2>&1 | mask | tee logs/latest.log ;;
+            podcast)            python -m app podcast morning $DRY 2>&1 | mask ;;
+            keycheck)           python -m app check keys 2>&1 | mask ;;
+            feedcheck)          python -m app check feeds 2>&1 | mask ;;
+            watchdog)           WATCHDOG_FORCE=1 python -m app watchdog 2>&1 | mask ;;
+            telegram-setup)     python -m app telegram setup 2>&1 | mask ;;
+          esac
+          # Daily checks ride along on the scheduled runs (each acts only at its own time).
+          if [ "$EVENT" = schedule ]; then
+            python -m app watchdog 2>&1 | mask || true
+            # breaking alerts (only if switched on in config.yaml): every 2 hours
+            if [ $(( 10#$(date -u +%M) )) -lt 30 ] && [ $(( 10#$(date -u +%H) % 2 )) -eq 0 ]; then
+              python -m app alerts 2>&1 | mask || true
+            fi
+          fi
+
+      - name: Save memory (state, briefs, logs)
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          for f in state briefs logs; do [ -e "$f" ] && git add "$f"; done
+          if ! git diff --cached --quiet; then
+            git commit -q -m "World Brief: memory $(date -u +%F)"
+            for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 10; done
+          fi
+
+      - name: Tell me if this run failed
+        if: failure()
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          TO_EMAIL: ${{ secrets.TO_EMAIL }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          EDITION: ${{ inputs.command || 'scheduled run' }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: python app/notify_failure.py

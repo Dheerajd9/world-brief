@@ -1,0 +1,11 @@
+.git
+.github
+data
+out
+docs
+tests
+state
+briefs
+logs
+.env
+**/__pycache__

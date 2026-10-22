@@ -1,0 +1,23 @@
+# Breaking-alert watchlist (only used when config.yaml has alerts: {breaking: true}).
+# A headline becomes a candidate if it matches a keyword below OR many outlets ran it within
+# the last few hours. The AI then scores importance 1-10 and only sends 8+ (min_score) by
+# email. Most days you get nothing; that's the point. Add your own keywords freely.
+
+min_score: 8
+max_alerts_per_day: 5
+lookback_hours: 3
+wide_coverage: 5          # this many outlets on one story = candidate even without keywords
+
+keywords:
+  money: ["stock market crash", "emergency rate", "rate cut", "rate hike", recession, "bank run",
+          "government shutdown", default]
+  big_events: [earthquake, cyclone, hurricane, typhoon, tsunami, "terror attack", war, ceasefire,
+               coup, "state of emergency", assassination, pandemic, outbreak, "nuclear"]
+  tech: ["AI regulation", "major outage", "data breach"]
+
+feeds:
+  - https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=en-US&gl=US&ceid=US:en
+  - https://feeds.bbci.co.uk/news/world/rss.xml
+  - https://www.aljazeera.com/xml/rss/all.xml

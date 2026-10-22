@@ -1,0 +1,23 @@
+# Example profile: world-only. Copy to config.yaml.
+you:
+  name: ''
+  timezone: UTC
+email:
+  from_name: World Brief
+  send_time: 07:00
+  weekly: true
+focus:
+  countries: []
+  cities: []
+podcast:
+  enabled: true
+  hosts:
+  - Alex
+  - Maya
+  accent: en-US
+  languages: []
+telegram:
+  enabled: false
+alerts:
+  breaking: false
+feeds_extra: []

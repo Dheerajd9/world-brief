@@ -1,0 +1,48 @@
+# India pack (focus.countries: [in])
+
+in_news:
+  - https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN:en
+  - https://news.google.com/rss/headlines/section/topic/NATION?hl=en-IN&gl=IN&ceid=IN:en
+  - https://www.thehindu.com/news/national/feeder/default.rss
+  - https://news.google.com/rss/search?q=site:indianexpress.com+India+when:1d&hl=en-IN&gl=IN&ceid=IN:en
+  - https://www.hindustantimes.com/feeds/rss/india-news/rssfeed.xml
+  - https://timesofindia.indiatimes.com/rssfeedstopstories.cms
+  - https://feeds.feedburner.com/ndtvnews-india-news
+  - https://feeds.feedburner.com/ndtvnews-top-stories
+  - https://news.google.com/rss/search?q=site:news18.com+India+when:1d&hl=en-IN&gl=IN&ceid=IN:en
+  - https://news.google.com/rss/search?q=site:theprint.in+when:1d&hl=en-IN&gl=IN&ceid=IN:en
+  - https://news.google.com/rss/search?q=site:scroll.in+when:1d&hl=en-IN&gl=IN&ceid=IN:en
+  - https://zeenews.india.com/rss/india-national-news.xml
+  - https://www.indiatoday.in/rss/1206578
+  - https://news.google.com/rss/search?q=India+US+trade+OR+tariff+OR+%22India-US%22+when:2d&hl=en-IN&gl=IN&ceid=IN:en
+  - https://news.google.com/rss/search?q=rupee+dollar+OR+remittance+when:1d&hl=en-IN&gl=IN&ceid=IN:en
+  - https://news.google.com/rss/search?q=India+exports+OR+imports+when:1d&hl=en-IN&gl=IN&ceid=IN:en
+
+in_economy:
+  - https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=en-IN&gl=IN&ceid=IN:en
+  - https://www.livemint.com/rss/economy
+  - https://economictimes.indiatimes.com/rssfeedstopstories.cms
+  - https://www.thehindu.com/business/Economy/feeder/default.rss
+  - https://news.google.com/rss/search?q=%22mutual+fund%22+OR+SIP+OR+AMFI+OR+SEBI+when:1d&hl=en-IN&gl=IN&ceid=IN:en
+  - https://news.google.com/rss/search?q=Sensex+OR+Nifty+closing+when:1d&hl=en-IN&gl=IN&ceid=IN:en
+  - https://news.google.com/rss/search?q=FII+OR+FPI+OR+DII+selling+OR+buying+when:1d&hl=en-IN&gl=IN&ceid=IN:en
+  - https://news.google.com/rss/search?q=RBI+repo+OR+%22CPI+inflation%22+OR+%22forex+reserves%22+when:2d&hl=en-IN&gl=IN&ceid=IN:en
+  - https://www.business-standard.com/rss/economy-102.rss
+  - https://news.google.com/rss/search?q=site:moneycontrol.com+when:1d&hl=en-IN&gl=IN&ceid=IN:en
+  - https://www.livemint.com/rss/markets
+  - https://economictimes.indiatimes.com/markets/rssfeeds/1977021501.cms
+  - https://news.google.com/rss/search?q=site:financialexpress.com+economy+OR+markets+when:1d&hl=en-IN&gl=IN&ceid=IN:en
+  - https://www.thehindubusinessline.com/feeder/default.rss
+  - https://www.rbi.org.in/pressreleases_rss.xml
+  - https://www.sebi.gov.in/sebirss.xml
+  - https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3
+  - https://www.altnews.in/feed/
+  - https://news.google.com/rss/search?q=%22fact+check%22+viral+OR+fake+OR+misleading+when:2d&hl=en-IN&gl=IN&ceid=IN:en
+  - https://factly.in/feed/
+  - https://news.google.com/rss/search?q=scam+OR+fraud+UPI+OR+WhatsApp+OR+%22digital+arrest%22+OR+KYC+OR+%22cyber+crime%22+when:2d&hl=en-IN&gl=IN&ceid=IN:en
+  - https://news.google.com/rss/search?q=IMD+alert+OR+cyclone+OR+flood+OR+heatwave+OR+earthquake+India+when:1d&hl=en-IN&gl=IN&ceid=IN:en
+  - https://news.google.com/rss/search?q=India+cricket+OR+BCCI+OR+%22Team+India%22+when:1d&hl=en-IN&gl=IN&ceid=IN:en
+  - https://news.google.com/rss/search?q=%22income+tax%22+OR+%22GST+council%22+OR+NRI+tax+when:2d&hl=en-IN&gl=IN&ceid=IN:en
+  - https://news.google.com/rss/search?q=%22home+loan%22+OR+%22FD+rates%22+OR+%22mutual+fund%22+OR+SIP+OR+%22income+tax%22+OR+insurance+when:2d&hl=en-IN&gl=IN&ceid=IN:en
+  - https://news.google.com/rss/search?q=IPO+OR+layoffs+OR+%22quarterly+results%22+India+when:2d&hl=en-IN&gl=IN&ceid=IN:en
+

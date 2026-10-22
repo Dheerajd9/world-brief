@@ -1,0 +1,43 @@
+# USA pack (focus.countries: [us])
+
+us_news:
+  - https://news.google.com/rss/headlines/section/topic/NATION?hl=en-US&gl=US&ceid=US:en
+  - https://feeds.npr.org/1001/rss.xml
+  - https://feeds.npr.org/1014/rss.xml
+  - https://news.google.com/rss/search?q=Congress+OR+%22White+House%22+OR+%22Supreme+Court%22+OR+%22federal+government%22+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://rss.nytimes.com/services/xml/rss/nyt/US.xml
+  - https://rss.nytimes.com/services/xml/rss/nyt/Politics.xml
+  - https://www.cbsnews.com/latest/rss/us
+  - https://feeds.abcnews.com/abcnews/usheadlines
+  - https://feeds.nbcnews.com/nbcnews/public/news
+  - https://www.pbs.org/newshour/feeds/rss/headlines
+  - https://thehill.com/homenews/feed/
+  - https://news.google.com/rss/search?q=site:politico.com+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://moxie.foxnews.com/google-publisher/us.xml
+  - https://news.google.com/rss/search?q=site:apnews.com+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=site:reuters.com+US+when:1d&hl=en-US&gl=US&ceid=US:en
+
+us_economy:
+  - https://www.cnbc.com/id/100003114/device/rss/rss.html
+  - https://www.cnbc.com/id/20910258/device/rss/rss.html
+  - https://news.google.com/rss/search?q=%22stock+market%22+today+S%26P+Nasdaq+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=tech+layoffs+OR+%22tech+jobs%22+OR+%22hiring+freeze%22+when:2d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=IRS+OR+%22capital+gains+tax%22+OR+%22tax+deadline%22+when:2d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=%22mortgage+rates%22+OR+%22home+loan+rates%22+when:2d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=%22mortgage+rates%22+OR+%22home+prices%22+OR+rent+prices+when:2d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=%22credit+card%22+OR+401k+OR+IRA+OR+%22Social+Security%22+OR+ETF+when:2d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=%22grocery+prices%22+OR+%22food+prices%22+OR+%22gas+prices%22+OR+%22electricity+bills%22+when:2d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=earnings+results+OR+%22quarterly+results%22+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=layoffs+OR+%22job+cuts%22+OR+%22hiring+freeze%22+when:2d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=acquisition+OR+merger+OR+IPO+OR+bankruptcy+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=%22remote+work%22+OR+%22return+to+office%22+OR+%22in-demand+skills%22+when:3d&hl=en-US&gl=US&ceid=US:en
+  - https://www.federalreserve.gov/feeds/press_all.xml
+  - https://news.google.com/rss/search?q=%22Bureau+of+Labor+Statistics%22+OR+%22jobs+report%22+OR+CPI+when:2d&hl=en-US&gl=US&ceid=US:en
+  - https://www.sec.gov/news/pressreleases.rss
+  - https://news.google.com/rss/search?q=site:whitehouse.gov+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=%22scam+alert%22+OR+FTC+OR+%22data+breach%22+OR+%22IRS+scam%22+OR+%22phishing%22+when:2d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=hurricane+OR+tornado+OR+blizzard+OR+wildfire+OR+%22National+Weather+Service%22+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=H-1B+OR+USCIS+OR+%22green+card%22+OR+OPT+OR+%22visa+bulletin%22+when:2d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=%22F-1+visa%22+OR+OPT+OR+%22STEM+OPT%22+OR+SEVIS+OR+%22H-1B+lottery%22+OR+%22student+visa%22+when:2d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=layoffs+OR+hiring+%22data+engineer%22+OR+%22machine+learning%22+OR+%22AI+jobs%22+OR+%22tech+jobs%22+when:2d&hl=en-US&gl=US&ceid=US:en
+

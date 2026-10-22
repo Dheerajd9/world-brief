@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1b3354">
+<title>World Brief player</title>
+<style>
+:root{--bg:#f4f6fa;--card:#fff;--fg:#17202e;--muted:#5a6475;--line:#d9dee7;--accent:#c2620a;--ink:#1b3354}
+@media (prefers-color-scheme:dark){:root{--bg:#0f141c;--card:#18202c;--fg:#e8ebf0;--muted:#9aa4b5;--line:#2a3445;--accent:#f0a052;--ink:#9db8ef}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans Telugu","Noto Sans Devanagari",sans-serif;
+  display:flex;justify-content:center;padding:16px}
+.card{background:var(--card);border-radius:18px;padding:22px 18px;width:100%;max-width:560px;
+  box-shadow:0 6px 30px rgba(0,0,0,.08);text-align:center}
+img.cover{width:112px;height:112px;border-radius:16px;object-fit:cover}
+h1{font-size:21px;margin:12px 0 2px;text-wrap:balance}
+p{margin:0 0 12px;color:var(--muted)}
+.err{color:#b3261e}
+button,a.btn{font:600 15px system-ui,sans-serif;padding:9px 13px;border-radius:999px;border:1px solid var(--line);
+  background:transparent;color:var(--fg);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+button:focus-visible,a.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:0 0 12px}
+.langs button{min-width:92px}
+audio{width:100%;margin:4px 0 10px}
+.jump button{font-size:16px;padding:10px 16px}
+.chaps{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:4px 0 14px}
+.chaps button{border-radius:12px;padding:10px 8px;justify-content:flex-start;flex-direction:column;align-items:flex-start;gap:0}
+.chaps button small{font-weight:400;color:var(--muted);font-size:12.5px}
+.chaps button.now{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+h2{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:18px 0 8px;text-align:left}
+.list{text-align:left;border-top:1px solid var(--line)}
+.day{padding:8px 0;border-bottom:1px solid var(--line)}
+.day b{display:block;font-size:14px;color:var(--muted);font-weight:600;margin-bottom:6px}
+.day .row{justify-content:flex-start;margin:0}
+.day button{font-size:13.5px;padding:6px 10px}
+.day button.cur{border-color:var(--accent);color:var(--accent)}
+</style></head><body><main class="card">
+<img class="cover" src="cover.png" alt="" onerror="this.remove()">
+<h1 id="t">World Brief</h1><p id="d"></p>
+<div class="row langs" id="langs"></div>
+<audio id="a" controls preload="metadata"></audio>
+<div class="row jump">
+  <button id="back" aria-label="Back 15 seconds">⏪ 15s</button>
+  <button id="fwd" aria-label="Forward 30 seconds">30s ⏩</button>
+  <a class="btn" id="dl" href="#" download>⬇️ Download</a>
+</div>
+<div class="chaps" id="c"></div>
+<div class="row" id="s"></div>
+<h2>Recent episodes</h2>
+<div class="list" id="eps"><p>Loading…</p></div>
+</main><script>
+(function(){
+  "use strict";
+  var REPO="__REPO__";
+  var a=document.getElementById("a"),t=document.getElementById("t"),d=document.getElementById("d");
+  var NAMES={"morning":"🔵 English Full","morning-quick":"🔵 English Quick","evening":"🔵 English",
+    "evening-quick":"🔵 English","weekly":"🔵 English Weekly",
+    "telugu":"🟠 Telugu","telugu-evening":"🟠 Telugu","telugu-weekly":"🟠 Telugu",
+    "hindi":"🟢 Hindi","hindi-evening":"🟢 Hindi","hindi-weekly":"🟢 Hindi"};
+  var TITLES={"morning":"Morning Brief: Full","morning-quick":"Morning Brief: Quick","evening":"Evening Update",
+    "evening-quick":"Evening Update","weekly":"Weekly Report",
+    "telugu":"ఈ రోజు వార్తలు (Telugu)","telugu-evening":"ఈ రోజు సాయంత్రం (Telugu evening)",
+    "telugu-weekly":"ఈ వారం వార్తలు (Telugu weekly)","hindi":"आज की खबरें (Hindi)",
+    "hindi-evening":"आज शाम की खबरें (Hindi evening)","hindi-weekly":"इस हफ्ते की खबरें (Hindi weekly)"};
+  var ICONS={"Top stories":"⭐ Most important","Local":"🏙️ Local","India":"🇮🇳 India","USA":"🇺🇸 USA","World":"🌍 World",
+    "Tech":"🤖 Tech & future","Money":"💰 Money","Wrap-up":"✅ Wrap-up"};
+  // Which files belong to the same edition (for the language tabs).
+  function edition(kind){ if(/weekly/.test(kind))return "weekly"; if(/evening/.test(kind))return "evening"; return "morning"; }
+  function parse(f){var m=f.match(/^(\d{4})-(\d{2})-(\d{2})-?(.*)\.mp3$/);return m?{date:m[1]+"-"+m[2]+"-"+m[3],kind:m[4],y:+m[1],mo:+m[2],da:+m[3]}:null;}
+  function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v);}catch(e){return null;}}
+  var ORDER=["morning","morning-quick","evening-quick","evening","weekly","telugu","telugu-evening","telugu-weekly","hindi","hindi-evening","hindi-weekly"];
+  function byOrder(x,y){return ORDER.indexOf(parse(x).kind)-ORDER.indexOf(parse(y).kind);}
+  var all=[], cur=null, chapters=[], tried=false, wantChapter=null;
+
+  function setSpeed(r){a.playbackRate=r;store("speed",String(r));
+    [].forEach.call(document.querySelectorAll("#s button"),function(x){x.className=(+x.dataset.r===r)?"on":"";});}
+  [0.75,1,1.25,1.5,2].forEach(function(r){var b=document.createElement("button");b.textContent=r+"x";b.dataset.r=r;
+    b.onclick=function(){setSpeed(r);};document.getElementById("s").appendChild(b);});
+
+  function chapterAt(time){var c=null;chapters.forEach(function(x){if(time>=x.t-0.5)c=x;});return c;}
+
+  function load(f, keepChapter){
+    if(!/^[A-Za-z0-9._-]+\.mp3$/.test(f)){t.textContent="Episode not found";d.className="err";return;}
+    var info=parse(f)||{kind:"",date:""};
+    wantChapter=keepChapter||null;
+    cur=f;tried=false;
+    t.textContent=TITLES[info.kind]||"World Brief";document.title=t.textContent;
+    d.className="";d.textContent=info.y?new Date(info.y,info.mo-1,info.da).toDateString():"";
+    history.replaceState(null,"","?f="+encodeURIComponent(f));
+    a.src="audio/"+encodeURIComponent(f);
+    var dl=document.getElementById("dl");dl.href="audio/"+encodeURIComponent(f);dl.setAttribute("download",f);
+    var sp=+store("speed");a.playbackRate=sp||1;setSpeed(sp||1);
+    renderLangs();renderList();loadChapters(f);setMedia();
+  }
+
+  a.addEventListener("error",function(){
+    if(!tried&&cur){tried=true;a.src="https://github.com/"+REPO+"/releases/download/episodes/"+encodeURIComponent(cur);a.load();return;}
+    d.textContent="Could not load the audio. Older episodes are removed after about 10 days.";d.className="err";});
+  a.addEventListener("loadedmetadata",function(){
+    a.playbackRate=+store("speed")||1;
+    if(wantChapter){var c=chapters.filter(function(x){return x.title===wantChapter;})[0];
+      if(c){a.currentTime=c.t;wantChapter=null;a.play().catch(function(){});return;}}
+    var p=+store("pos:"+cur);if(p>5&&p<a.duration-10)a.currentTime=p;});
+  a.addEventListener("timeupdate",function(){if(cur)store("pos:"+cur,String(Math.floor(a.currentTime)));highlight();});
+  a.addEventListener("ended",function(){store("pos:"+cur,"0");});
+
+  document.getElementById("back").onclick=function(){a.currentTime=Math.max(0,a.currentTime-15);};
+  document.getElementById("fwd").onclick=function(){a.currentTime=Math.min(a.duration||1e9,a.currentTime+30);};
+
+  function loadChapters(f){
+    chapters=[];var box=document.getElementById("c");box.innerHTML="";
+    fetch("chapters/"+encodeURIComponent(f)+".json").then(function(r){return r.ok?r.json():[];}).then(function(list){
+      if(!Array.isArray(list)||list.length<2||f!==cur)return;
+      chapters=list.filter(function(x){return typeof x.t==="number";});
+      chapters.forEach(function(ch){
+        var b=document.createElement("button"),m=Math.floor(ch.t/60),s=("0"+Math.floor(ch.t%60)).slice(-2);
+        b.textContent=ICONS[ch.title]||String(ch.title).slice(0,30);
+        var sm=document.createElement("small");sm.textContent=m+":"+s;b.appendChild(sm);
+        b.onclick=function(){a.currentTime=ch.t;a.play().catch(function(){});};ch.btn=b;box.appendChild(b);});
+      if(wantChapter&&a.readyState>=1){var c=chapters.filter(function(x){return x.title===wantChapter;})[0];
+        if(c){a.currentTime=c.t;wantChapter=null;}}
+      highlight();setMedia();
+    }).catch(function(){});
+  }
+  function highlight(){var c=chapterAt(a.currentTime);chapters.forEach(function(x){if(x.btn)x.btn.classList.toggle("now",x===c);});}
+
+  // Language tabs: same day + same edition; switching keeps the current chapter.
+  function renderLangs(){
+    var box=document.getElementById("langs");box.innerHTML="";
+    var info=parse(cur);if(!info)return;
+    var sib=all.filter(function(f){var p=parse(f);return p&&p.date===info.date&&edition(p.kind)===edition(info.kind);});
+    if(sib.length<2)return;
+    sib.sort(byOrder);
+    sib.forEach(function(f){var b=document.createElement("button");b.textContent=NAMES[parse(f).kind]||parse(f).kind;
+      if(f===cur)b.className="on";
+      b.onclick=function(){if(f===cur)return;var c=chapterAt(a.currentTime);var playing=!a.paused;
+        load(f,c&&a.currentTime>3?c.title:null);if(playing)a.play().catch(function(){});};
+      box.appendChild(b);});
+  }
+
+  // Recent episodes, grouped by day and edition.
+  function renderList(){
+    var box=document.getElementById("eps");box.innerHTML="";
+    if(!all.length){box.innerHTML="<p>No list yet.</p>";return;}
+    var groups={};
+    all.forEach(function(f){var p=parse(f);if(!p)return;var k=p.date+" "+edition(p.kind);(groups[k]=groups[k]||[]).push(f);});
+    Object.keys(groups).sort().reverse().slice(0,20).forEach(function(k){
+      var parts=k.split(" "),p=parse(groups[k][0]);
+      var div=document.createElement("div");div.className="day";
+      var b=document.createElement("b");b.textContent=new Date(p.y,p.mo-1,p.da).toDateString()+" · "+parts[1];div.appendChild(b);
+      var row=document.createElement("div");row.className="row";
+      groups[k].sort(byOrder).forEach(function(f){var btn=document.createElement("button");btn.textContent=NAMES[parse(f).kind]||parse(f).kind;
+        if(f===cur)btn.className="cur";btn.onclick=function(){load(f);a.play().catch(function(){});window.scrollTo(0,0);};row.appendChild(btn);});
+      div.appendChild(row);box.appendChild(div);});
+  }
+
+  // Lock screen, headphones, car, Android notification, Windows media keys.
+  function setMedia(){
+    if(!("mediaSession" in navigator))return;
+    try{
+      var c=chapterAt(a.currentTime);
+      navigator.mediaSession.metadata=new MediaMetadata({title:t.textContent,
+        artist:"World Brief"+(c?" · "+(ICONS[c.title]||c.title):""),album:d.textContent,
+        artwork:[{src:new URL("cover.png",location.href).href,sizes:"1400x1400",type:"image/png"}]});
+      var ms=navigator.mediaSession;
+      ms.setActionHandler("play",function(){a.play();});
+      ms.setActionHandler("pause",function(){a.pause();});
+      ms.setActionHandler("seekbackward",function(e){a.currentTime=Math.max(0,a.currentTime-((e&&e.seekOffset)||15));});
+      ms.setActionHandler("seekforward",function(e){a.currentTime=a.currentTime+((e&&e.seekOffset)||30);});
+      ms.setActionHandler("previoustrack",function(){var c=chapterAt(a.currentTime-3),i=chapters.indexOf(c);
+        a.currentTime=(i>0&&a.currentTime-c.t<3)?chapters[i-1].t:(c?c.t:0);});
+      ms.setActionHandler("nexttrack",function(){var c=chapterAt(a.currentTime),i=chapters.indexOf(c);
+        if(i>=0&&i<chapters.length-1)a.currentTime=chapters[i+1].t;});
+      try{ms.setActionHandler("seekto",function(e){if(e.seekTime!=null)a.currentTime=e.seekTime;});}catch(e){}
+    }catch(e){}
+  }
+  var lastChap=null;
+  a.addEventListener("timeupdate",function(){var c=chapterAt(a.currentTime);if(c!==lastChap){lastChap=c;setMedia();}});
+
+  var first=new URLSearchParams(location.search).get("f")||"";
+  fetch("audio/index.json",{cache:"no-store"}).then(function(r){return r.ok?r.json():[];}).catch(function(){return [];})
+  .then(function(list){
+    all=(Array.isArray(list)?list:[]).filter(function(x){return /^[A-Za-z0-9._-]+\.mp3$/.test(x);});
+    if(!first&&all.length){first=all.slice().sort().reverse()[0];}
+    if(first&&all.indexOf(first)<0)all.push(first);
+    load(first);
+  });
+})();
+</script></body></html>

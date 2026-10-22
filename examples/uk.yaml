@@ -1,0 +1,25 @@
+# Example profile: uk. Copy to config.yaml.
+you:
+  name: ''
+  timezone: Europe/London
+email:
+  from_name: World Brief
+  send_time: 07:00
+  weekly: true
+focus:
+  countries:
+  - gb
+  cities:
+  - London
+podcast:
+  enabled: true
+  hosts:
+  - Oliver
+  - Amelia
+  accent: en-GB
+  languages: []
+telegram:
+  enabled: false
+alerts:
+  breaking: false
+feeds_extra: []

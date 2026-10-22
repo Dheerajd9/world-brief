@@ -1,0 +1,16 @@
+# Canada pack (focus.countries: [ca])
+
+ca_news:
+  - https://news.google.com/rss/search?q=%22Express+Entry%22+OR+IRCC+when:2d&hl=en-CA&gl=CA&ceid=CA:en
+  - https://www.bankofcanada.ca/content_type/press-releases/feed/
+  - https://www.cbc.ca/webfeed/rss/rss-canada
+  - https://www.cbc.ca/webfeed/rss/rss-business
+  - https://news.google.com/rss/search?q=%22Bank+of+Canada%22+OR+%22Statistics+Canada%22+when:2d&hl=en-CA&gl=CA&ceid=CA:en
+  - https://news.google.com/rss/search?q=IRCC+OR+%22Express+Entry%22+OR+%22study+permit%22+OR+%22permanent+residence%22+Canada+when:3d&hl=en-CA&gl=CA&ceid=CA:en
+  - https://news.google.com/rss/search?q=Canada+housing+OR+rent+OR+%22federal+budget%22+OR+Carney+OR+Parliament+when:2d&hl=en-CA&gl=CA&ceid=CA:en
+  - https://globalnews.ca/feed/
+  - https://www.theglobeandmail.com/arc/outboundfeeds/rss/category/canada/
+  - https://nationalpost.com/feed/
+  - https://www.cbc.ca/webfeed/rss/rss-politics
+  - https://news.google.com/rss/search?q=%22Express+Entry%22+OR+PGWP+OR+%22study+permit%22+OR+%22CRS+score%22+when:3d&hl=en-CA&gl=CA&ceid=CA:en
+

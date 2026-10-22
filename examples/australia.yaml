@@ -1,0 +1,25 @@
+# Example profile: australia. Copy to config.yaml.
+you:
+  name: ''
+  timezone: Australia/Sydney
+email:
+  from_name: World Brief
+  send_time: 07:00
+  weekly: true
+focus:
+  countries:
+  - au
+  cities:
+  - Sydney
+podcast:
+  enabled: true
+  hosts:
+  - Alex
+  - Maya
+  accent: en-AU
+  languages: []
+telegram:
+  enabled: false
+alerts:
+  breaking: false
+feeds_extra: []

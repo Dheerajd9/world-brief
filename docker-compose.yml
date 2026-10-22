@@ -1,0 +1,17 @@
+# World Brief with Docker.
+#   1) docker compose run --rm world-brief setup     (wizard: writes ./data/config.yaml + ./data/.env)
+#   2) docker compose run --rm world-brief check keys
+#   3) docker compose up -d                          (runs forever; sends every day on time)
+# Logs: docker compose logs -f     Send now: docker compose run --rm world-brief run morning
+services:
+  world-brief:
+    image: ${WB_IMAGE:-ghcr.io/dheerajd9/world-brief:latest}
+    restart: unless-stopped
+    volumes:
+      - ./data:/data
+    # Keys can also come from ./data/.env (the wizard writes it); a .env next to this file works too.
+    env_file:
+      - path: .env
+        required: false
+    stdin_open: true
+    tty: true

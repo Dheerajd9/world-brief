@@ -1,0 +1,13 @@
+# United Kingdom pack (focus.countries: [gb])
+
+uk_news:
+  - https://feeds.bbci.co.uk/news/uk/rss.xml
+  - https://www.theguardian.com/uk-news/rss
+  - https://feeds.bbci.co.uk/news/politics/rss.xml
+  - https://www.independent.co.uk/news/uk/rss
+  - https://news.google.com/rss/search?q=UK+government+OR+Parliament+OR+%22Bank+of+England%22+when:1d&hl=en-GB&gl=GB&ceid=GB:en
+
+uk_economy:
+  - https://www.theguardian.com/business/economics/rss
+  - https://news.google.com/rss/search?q=%22Bank+of+England%22+OR+%22cost+of+living%22+OR+FTSE+when:1d&hl=en-GB&gl=GB&ceid=GB:en
+

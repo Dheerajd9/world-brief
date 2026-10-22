@@ -1,0 +1,7 @@
+# Australia pack (focus.countries: [au])
+
+au_news:
+  - https://www.abc.net.au/news/feed/2942460/rss.xml
+  - https://www.theguardian.com/australia-news/rss
+  - https://news.google.com/rss/search?q=Australia+government+OR+RBA+OR+Albanese+when:1d&hl=en-AU&gl=AU&ceid=AU:en
+

@@ -1,0 +1,135 @@
+# World pack: always used. Global news, every region, economy, AI & tech, science,
+# fact checks, disasters, sports, good news. Add your own feeds in config.yaml (feeds_extra).
+
+world:
+  - https://feeds.bbci.co.uk/news/world/rss.xml
+  - https://www.aljazeera.com/xml/rss/all.xml
+  - https://www.theguardian.com/world/rss
+  - https://rss.dw.com/rdf/rss-en-world
+  - https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-US&gl=US&ceid=US:en
+  - https://rss.nytimes.com/services/xml/rss/nyt/World.xml
+  - https://www.cbsnews.com/latest/rss/world
+  - https://feeds.npr.org/1004/rss.xml
+  - https://www.independent.co.uk/news/world/rss
+  - https://www.euronews.com/rss?level=theme&name=news
+  - https://www.rfi.fr/en/rss
+  - https://www.cbc.ca/webfeed/rss/rss-world
+  - https://news.google.com/rss/search?q=site:reuters.com+world+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=site:apnews.com+world+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://feeds.bbci.co.uk/news/rss.xml
+
+world_regions:
+  - https://feeds.bbci.co.uk/news/world/asia/rss.xml
+  - https://feeds.bbci.co.uk/news/world/middle_east/rss.xml
+  - https://feeds.bbci.co.uk/news/world/europe/rss.xml
+  - https://feeds.bbci.co.uk/news/world/africa/rss.xml
+  - https://feeds.bbci.co.uk/news/world/latin_america/rss.xml
+  - https://news.google.com/rss/search?q=site:france24.com+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://news.un.org/feed/subscribe/en/news/all/rss.xml
+  - https://news.google.com/rss/search?q=Russia+OR+Ukraine+OR+Kazakhstan+OR+%22Central+Asia%22+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://www.scmp.com/rss/91/feed
+  - https://www.scmp.com/rss/2/feed
+  - https://www.channelnewsasia.com/rssfeeds/8395884
+  - https://www.japantimes.co.jp/feed/
+  - https://news.google.com/rss/search?q=site:timesofisrael.com+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=site:kyivindependent.com+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://www.dawn.com/feeds/home
+  - https://www.mercopress.com/rss/
+  - https://www.abc.net.au/news/feed/51120/rss.xml
+  - https://www.africanews.com/feed/rss
+  - https://news.google.com/rss/search?q=South+Korea+OR+%22North+Korea%22+OR+Taiwan+OR+Philippines+OR+Indonesia+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=Africa+OR+Nigeria+OR+Kenya+OR+%22South+Africa%22+OR+Ethiopia+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=Brazil+OR+Mexico+OR+Argentina+OR+Venezuela+OR+Colombia+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=Iran+OR+Israel+OR+Gaza+OR+%22Saudi+Arabia%22+OR+UAE+OR+Turkey+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=%22European+Union%22+OR+Germany+OR+France+OR+UK+OR+NATO+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://feeds.bbci.co.uk/news/world/asia/india/rss.xml
+  - https://news.google.com/rss/search?q=India+OR+Pakistan+OR+Bangladesh+OR+%22Sri+Lanka%22+OR+Nepal+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=China+OR+Japan+OR+%22Hong+Kong%22+OR+Vietnam+OR+Thailand+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=Canada+OR+Australia+OR+%22New+Zealand%22+when:1d&hl=en-US&gl=US&ceid=US:en
+
+global_economy:
+  - https://feeds.bbci.co.uk/news/business/rss.xml
+  - https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=oil+prices+OR+shipping+OR+sanctions+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://www.ft.com/world?format=rss
+  - https://www.economist.com/finance-and-economics/rss.xml
+  - https://feeds.marketwatch.com/marketwatch/topstories/
+  - https://www.cnbc.com/id/100727362/device/rss/rss.html
+  - https://feeds.bloomberg.com/markets/news.rss
+  - https://news.google.com/rss/search?q=site:wsj.com+when:1d&hl=en-US&gl=US&ceid=US:en
+
+ai_robotics:
+  - https://news.google.com/rss/search?q=OpenAI+OR+Anthropic+OR+%22Google+DeepMind%22+OR+xAI+OR+%22Meta+AI%22+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=%22humanoid+robot%22+OR+%22AI+agents%22+OR+%22autonomous+vehicles%22+OR+robotaxi+when:2d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=%22AI+regulation%22+OR+%22AI+jobs%22+OR+AGI+OR+%22AI+adoption%22+when:2d&hl=en-US&gl=US&ceid=US:en
+  - https://techcrunch.com/category/artificial-intelligence/feed/
+  - https://spectrum.ieee.org/feeds/topic/robotics.rss
+  - https://www.theverge.com/rss/ai-artificial-intelligence/index.xml
+  - https://news.google.com/rss/search?q=site:venturebeat.com+AI+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://the-decoder.com/feed/
+  - https://www.wired.com/feed/tag/ai/latest/rss
+  - https://openai.com/news/rss.xml
+  - https://blog.google/technology/ai/rss/
+  - https://deepmind.google/blog/rss.xml
+  - https://huggingface.co/blog/feed.xml
+  - https://www.zdnet.com/topic/artificial-intelligence/rss.xml
+  - https://www.marktechpost.com/feed/
+  - https://www.therobotreport.com/feed/
+  - https://news.mit.edu/rss/topic/artificial-intelligence2
+  - https://news.google.com/rss/search?q=site:anthropic.com+OR+Claude+Anthropic+when:1d&hl=en-US&gl=US&ceid=US:en
+
+frontier_companies:
+  - https://news.google.com/rss/search?q=Tesla+OR+SpaceX+OR+Starship+OR+Neuralink+OR+xAI+OR+Starlink+when:1d&hl=en-US&gl=US&ceid=US:en
+
+tech:
+  - https://feeds.arstechnica.com/arstechnica/index
+  - https://www.technologyreview.com/feed/
+  - https://hnrss.org/frontpage?points=300
+  - https://news.google.com/rss/search?q=%22artificial+intelligence%22+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://www.theverge.com/rss/index.xml
+  - https://techcrunch.com/feed/
+  - https://www.engadget.com/rss.xml
+  - https://www.wired.com/feed/rss
+  - https://www.404media.co/rss/
+
+chips_energy_future:
+  - https://news.google.com/rss/search?q=NVIDIA+OR+TSMC+OR+AMD+OR+Intel+OR+semiconductor+OR+%22data+center%22+when:1d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=fusion+OR+%22nuclear+power%22+OR+%22battery+breakthrough%22+OR+%22grid+storage%22+OR+%22AI+electricity%22+when:2d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=%22quantum+computing%22+OR+%22gene+editing%22+OR+CRISPR+OR+%22brain-computer+interface%22+OR+longevity+when:3d&hl=en-US&gl=US&ceid=US:en
+  - https://news.google.com/rss/search?q=NASA+OR+ISRO+OR+%22Moon+mission%22+OR+Mars+OR+%22rocket+launch%22+when:2d&hl=en-US&gl=US&ceid=US:en
+
+science_health_climate:
+  - https://www.nature.com/nature.rss
+  - https://www.sciencedaily.com/rss/top/science.xml
+  - https://www.sciencenews.org/feed
+  - https://www.newscientist.com/feed/home/
+  - https://www.statnews.com/feed/
+  - https://www.who.int/rss-feeds/news-english.xml
+  - https://www.carbonbrief.org/feed/
+  - https://www.space.com/feeds/all
+  - https://www.nasa.gov/news-release/feed/
+
+official:
+  - https://www.ecb.europa.eu/rss/press.html
+
+fact_check:
+  - https://news.google.com/rss/search?q=%22fact+check%22+viral+OR+misleading+OR+false+claim+when:2d&hl=en-US&gl=US&ceid=US:en
+  - https://www.snopes.com/feed/
+  - https://www.factcheck.org/feed/
+
+scams_safety:
+  - https://feeds.feedburner.com/TheHackersNews
+  - https://krebsonsecurity.com/feed/
+  - https://www.bleepingcomputer.com/feed/
+
+weather_disasters:
+  - https://www.gdacs.org/xml/rss.xml
+
+sports:
+  - https://www.espncricinfo.com/rss/content/story/feeds/0.xml
+  - https://feeds.bbci.co.uk/sport/rss.xml
+
+good_news:
+  - https://www.goodnewsnetwork.org/feed/
+  - https://www.positive.news/feed/
+

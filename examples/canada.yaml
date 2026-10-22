@@ -1,0 +1,26 @@
+# Example profile: canada. Copy to config.yaml.
+you:
+  name: ''
+  timezone: America/Toronto
+email:
+  from_name: World Brief
+  send_time: 07:00
+  weekly: true
+focus:
+  countries:
+  - ca
+  - us
+  cities:
+  - Toronto
+podcast:
+  enabled: true
+  hosts:
+  - Alex
+  - Maya
+  accent: en-CA
+  languages: []
+telegram:
+  enabled: false
+alerts:
+  breaking: false
+feeds_extra: []

@@ -1,0 +1,28 @@
+# Example profile: india-usa. Copy to config.yaml.
+you:
+  name: ''
+  timezone: America/New_York
+email:
+  from_name: World Brief
+  send_time: 07:00
+  weekly: true
+focus:
+  countries:
+  - in
+  - us
+  - ca
+  cities:
+  - Hyderabad
+podcast:
+  enabled: true
+  hosts:
+  - Kartik
+  - Priya
+  accent: en-IN
+  languages:
+  - te
+telegram:
+  enabled: false
+alerts:
+  breaking: false
+feeds_extra: []
