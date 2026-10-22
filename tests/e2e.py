@@ -824,7 +824,7 @@ import os, sys, json
 sys.path.insert(0, os.getcwd())
 import digest
 os.environ.update(GMAIL_USER="news.sender@gmail.com\n", GMAIL_APP_PASSWORD="abcd efgh\n",
-                  TO_EMAIL="me@gmail.com\n", PARENTS_EMAIL="a@gmail.com, b@gmail.com\n")
+                  TO_EMAIL="me@gmail.com\n", EXTRA_EMAILS="a@gmail.com, b@gmail.com\n")
 sent = {}
 class FakeSMTP:
     def __init__(self, *a, **k): pass

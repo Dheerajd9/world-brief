@@ -1,11 +1,16 @@
+# One grouped update PR per month per ecosystem; the Test workflow checks it before you merge.
 version: 2
 updates:
   - package-ecosystem: pip
     directory: "/"
     schedule: {interval: monthly}
+    groups:
+      python: {patterns: ["*"]}
   - package-ecosystem: github-actions
     directory: "/"
     schedule: {interval: monthly}
+    groups:
+      actions: {patterns: ["*"]}
   - package-ecosystem: docker
     directory: "/"
     schedule: {interval: monthly}
