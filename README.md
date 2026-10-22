@@ -67,7 +67,7 @@ From now on it arrives every morning by itself.
 
 ```bash
 mkdir world-brief && cd world-brief
-curl -fsSLO https://raw.githubusercontent.com/dheerajd9/world-brief/MASTER/docker-compose.yml
+curl -fsSLO https://raw.githubusercontent.com/dheerajd9/world-brief/main/docker-compose.yml
 docker compose run --rm world-brief setup        # the same wizard; saves ./data/config.yaml + ./data/.env
 docker compose run --rm world-brief check keys   # ✅/❌ email for every key
 docker compose up -d                             # runs forever, sends every morning

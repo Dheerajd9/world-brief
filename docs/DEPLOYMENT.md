@@ -13,7 +13,7 @@
 - `docker-compose.yml`: one service, `env_file: .env`, volume `./data:/data`,
   `restart: unless-stopped`.
 - Image: `ghcr.io/<owner>/world-brief:<version>` and `:latest`, linux/amd64 + linux/arm64
-  (Raspberry Pi, Apple Silicon). Built by `docker-publish.yml` on tag `v*` after tests pass.
+  (Raspberry Pi, Apple Silicon). Built by `docker-publish.yml` on a tag `v*` or by hand (Actions → Docker image → Run workflow), after tests pass.
 
 ## Releases
 Semantic versions. `CHANGELOG.md` updated per release. Template users get updates by a
