@@ -1,6 +1,6 @@
 # World Brief: daily world-news email + podcast. Runs forever and sends on time.
 #   docker compose up -d        (see README)
-FROM python:3.12-slim
+FROM python:3.15-slim
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends ffmpeg git ca-certificates fonts-dejavu-core tzdata \
