@@ -1,1 +1,111 @@
-nothing due right now (or already sent today)
+  ! feed failed: https://www.positive.news/feed/ (403 Client Error: Forbidden for url: https://www.positive.news/feed/)
+Edition: morning
+Fetching feeds...
+   23 items  world                        BBC
+   25 items  world                        Al Jazeera
+   36 items  world                        The Guardian
+   11 items  world                        DW
+   46 items  world                        DW
+   40 items  world                        NYT > World News
+   18 items  world                        DW
+    6 items  world                        NPR
+   72 items  world                        The Independent World
+   30 items  world                        Euronews RSS
+   11 items  world                        RFI
+   20 items  world                        World News
+  100 items  world                        "site:reuters.com world when:1
+  100 items  world                        "site:apnews.com world when:1d
+   29 items  world                        BBC
+    5 items  world_regions                BBC
+    3 items  world_regions                BBC
+    9 items  world_regions                BBC
+    6 items  world_regions                BBC
+    1 items  world_regions                BBC
+   99 items  world_regions                "site:france24.com when:1d"
+    6 items  world_regions                UN News
+  100 items  world_regions                "Russia OR Ukraine OR Kazakhst
+   50 items  world_regions                News
+   19 items  world_regions                Hong Kong
+   20 items  world_regions                Latest News
+   30 items  world_regions                Latest articles
+   99 items  world_regions                "site:timesofisrael.com when:1
+   31 items  world_regions                "site:kyivindependent.com when
+   26 items  world_regions                Dawn
+    8 items  world_regions                MercoPress
+   25 items  world_regions                Just In
+   21 items  world_regions                Africanews RSS
+  100 items  world_regions                "South Korea OR "North Korea" 
+  100 items  world_regions                "Africa OR Nigeria OR Kenya OR
+  100 items  world_regions                "Brazil OR Mexico OR Argentina
+  100 items  world_regions                "Iran OR Israel OR Gaza OR "Sa
+  100 items  world_regions                ""European Union" OR Germany O
+    1 items  world_regions                BBC
+  100 items  world_regions                "India OR Pakistan OR Banglade
+  100 items  world_regions                "China OR Japan OR "Hong Kong"
+  100 items  world_regions                "Canada OR Australia OR "New Z
+   17 items  global_economy               BBC
+   47 items  global_economy               Business
+  100 items  global_economy               "oil prices OR shipping OR san
+   25 items  global_economy               DW
+    2 items  global_economy               Finance & economics
+   10 items  global_economy               MarketWatch.com
+   28 items  global_economy               CNBC
+   20 items  global_economy               Bloomberg Markets
+   99 items  global_economy               "site:wsj.com when:1d"
+  100 items  ai_robotics                  "OpenAI OR Anthropic OR "Googl
+   99 items  ai_robotics                  ""humanoid robot" OR "AI agent
+   63 items  ai_robotics                  ""AI regulation" OR "AI jobs" 
+   20 items  ai_robotics                  TechCrunch
+    0 items  ai_robotics                  IEEE Spectrum
+    6 items  ai_robotics                  The Verge
+   11 items  ai_robotics                  "site:venturebeat.com AI when:
+    7 items  ai_robotics                  The Decoder
+    5 items  ai_robotics                  Feed
+    2 items  ai_robotics                  OpenAI News
+    1 items  ai_robotics                  AI
+    0 items  ai_robotics                  Google DeepMind News
+    0 items  ai_robotics                  Hugging Face
+   10 items  ai_robotics                  news
+    8 items  ai_robotics                  MarkTechPost
+    3 items  ai_robotics                  The Robot Report
+    2 items  ai_robotics                  MIT News
+    0 items  ai_robotics                  "site:anthropic.com OR Claude 
+  100 items  frontier_companies           "Tesla OR SpaceX OR Starship O
+   14 items  tech                         Ars Technica
+    4 items  tech                         MIT Tech Review
+   15 items  tech                         Hacker News
+  100 items  tech                         ""artificial intelligence" whe
+   10 items  tech                         The Verge
+   20 items  tech                         TechCrunch
+   20 items  tech                         Engadget
+   31 items  tech                         WIRED
+    7 items  tech                         404 Media
+  100 items  chips_energy_future          "NVIDIA OR TSMC OR AMD OR Inte
+   66 items  chips_energy_future          "fusion OR "nuclear power" OR 
+   65 items  chips_energy_future          ""quantum computing" OR "gene 
+   91 items  chips_energy_future          "NASA OR ISRO OR "Moon mission
+    0 items  science_health_climate       Nature
+    4 items  science_health_climate       ScienceDaily
+    2 items  science_health_climate       Science News
+    4 items  science_health_climate       New Scientist
+   15 items  science_health_climate       STAT
+    0 items  science_health_climate       News (English)
+    0 items  science_health_climate       Carbon Brief
+   11 items  science_health_climate       Latest from Space.com
+   10 items  science_health_climate       NASA
+    1 items  official                     ECB
+   21 items  fact_check                   ""fact check" viral OR mislead
+    7 items  fact_check                   Snopes.com
+    1 items  fact_check                   FactCheck.org
+   11 items  scams_safety                 The Hacker News
+    1 items  scams_safety                 Krebs on Security
+   13 items  scams_safety                 BleepingComputer
+   58 items  weather_disasters            GDACS RSS information
+   25 items  sports                       Cricket news from Cricinfo.com
+   42 items  sports                       BBC
+    7 items  good_news                    Good News Network
+[0m] feeds downloaded (3487 items)
+[0m] duplicates merged (2956 stories)
+[0m] 3487 raw -> 285 items after dedupe/cap; 15 history events; memory 0 chars
+  [0m] brief prompt ~40,462 tokens
+  ! every AI failed; will retry in the next scheduled slot
